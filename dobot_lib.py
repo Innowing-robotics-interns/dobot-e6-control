@@ -117,9 +117,12 @@ def movl(x, y, z, rx, ry, rz, speed=100):
     send_command(sock, command)
 
 # Move the robot based on joint pose (x, y, z, rx, ry, rz)
-def pose_movj(x, y, z, rx, ry, rz):
+def pose_ik_movj(x, y, z, rx, ry, rz):
     input("Press Enter to solve ik and move..")
     joint_angle_list = inverse_k(x, y, z, rx, ry, rz)
+    if joint_angle_list is False:
+        print("Inverse kinematics calculation failed")
+        return
     command = f"MovJ(joint={{ {joint_angle_list[0]},{joint_angle_list[1]},{joint_angle_list[2]},{joint_angle_list[3]},{joint_angle_list[4]},{joint_angle_list[5]} }})"
     send_command(sock, command)
 
@@ -152,7 +155,8 @@ def inverse_k(x, y, z, rx, ry, rz, user=None, tool=None, use_joint_near=None, jo
     
     # Check for error ID
     if error_id != '0':
-        raise ValueError(f"Error in inverse kinematics calculation: {error_id}")
+        print(f"Error in inverse kinematics calculation: {error_id}")
+        return False
 
     print(f"Joint values: {J1}, {J2}, {J3}, {J4}, {J5}, {J6}")
     

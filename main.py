@@ -15,11 +15,12 @@ def main():
     dobot.set_collision_sensitivity(1)
 
     dobot.joint_movj(-350,-10,-135,50,90,320)
-
     read_error_and_clear()
 
-    dobot.joint_movj(-350,-10,100,50,90,320)
+    # dobot.pose_movj(300,300,300,0,0,0)
+    # read_error_and_clear()
 
+    dobot.joint_movj(-350,-10,100,50,90,320)
     read_error_and_clear()
 
     dobot.clear_error()
