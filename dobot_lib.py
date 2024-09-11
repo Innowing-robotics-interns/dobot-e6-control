@@ -116,6 +116,11 @@ def movl(x, y, z, rx, ry, rz, speed=100):
     command = f"MovL(pose={{ {x},{y},{z},{rx},{ry},{rz} }}, v={speed})"
     send_command(sock, command)
 
+def pose_movj(x, y, z, rx, ry, rz):
+    input("Press Enter to move..")
+    command = f"MovJ(pose={{ {x},{y},{z},{rx},{ry},{rz} }})"
+    send_command(sock, command)
+
 # Move the robot based on joint pose (x, y, z, rx, ry, rz)
 def pose_ik_movj(x, y, z, rx, ry, rz):
     input("Press Enter to solve ik and move..")

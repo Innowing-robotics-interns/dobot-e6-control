@@ -17,8 +17,13 @@ def main():
     dobot.joint_movj(-350,-10,-135,50,90,320)
     read_error_and_clear()
 
-    # dobot.pose_movj(300,300,300,0,0,0)
+    # dobot.pose_movj(250,-35,130,176,0,-45)
+    # dobot.pose_movj(250,-35,130,176,0,-45)
     # read_error_and_clear()
+
+    # dobot.pose_movj(250,-35,130,176,0,-45)
+    dobot.pose_movj(350,-35,130,176,0,-45)
+    read_error_and_clear()
 
     dobot.joint_movj(-350,-10,100,50,90,320)
     read_error_and_clear()
